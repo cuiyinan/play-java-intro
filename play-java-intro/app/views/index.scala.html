@@ -1,0 +1,33 @@
+@(title:String,message:String,persons:List[Person])
+@import helper._
+
+@main(title) {
+     <!--<script type='text/javascript' src='@routes.Assets.at("javascripts/index.js")'></script>
+
+    <ul id="persons"></ul>-->
+    
+   <form method="POST" action="@routes.Application.addPerson()">
+       <input type="text" name="name" />
+       <button>Add Person</button>
+   </form>
+    <hr>
+    <table>
+     <thead>
+     <tr>
+         <th>ID</th>
+         <th>Name</th>
+     </tr>
+     </thead>
+     <tbody>
+      @for(p<-persons) {
+        <tr>
+          <td><a href="">@p.id</a></td>
+          <td>@p.name</td>
+        </tr>
+      }
+     </tbody>
+    </table>
+
+
+}
+
