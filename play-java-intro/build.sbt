@@ -3,6 +3,7 @@ name := """play-java-intro"""
 version := "1.0-SNAPSHOT"
 
 lazy val root = (project in file(".")).enablePlugins(PlayJava, PlayEbean)
+ivyScala := ivyScala.value map { _.copy(overrideScalaVersion = true) }
 
 libraryDependencies ++= Seq(
   javaJpa,
@@ -16,5 +17,4 @@ libraryDependencies ++= Seq(
 // other, legacy style, accesses its actions statically.
 routesGenerator := InjectedRoutesGenerator
 
-offline:=true
-fork in run := true
+//fork in run := true
