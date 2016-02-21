@@ -1,12 +1,10 @@
 package controllers;
-import play.*;
 import play.db.ebean.Transactional;
 import play.mvc.*;
 import views.html.*;
 import models.Person;
 import play.data.Form;
 import java.util.List;
-import static play.libs.Json.*;
 
 
 public class Application extends Controller {
@@ -20,9 +18,8 @@ public class Application extends Controller {
     }
     @Transactional
     public Result addPerson() {
-        // Person person = Form.form(Person.class).bindFromRequest().get();
-        // JPA.em().persist(person);
-        Person person = Form.form(Person.class).bindFromRequest().get();
+        Form<Person> form = Form.form(Person.class).bindFromRequest();
+        Person person = form.get();
         person.save();
         return redirect(routes.Application.index());
     }
